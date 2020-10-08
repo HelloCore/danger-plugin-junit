@@ -81,7 +81,7 @@ export default async function junit(options: JUnitReportOptions) {
 }
 
 function gatherErrorDetail(failure: Element): string {
-  let detail = "```"
+  let detail = "\n\n```"
   if (failure.hasAttribute("type") && failure.getAttribute("type") !== "") {
     detail += `${failure.getAttribute("type")}: `
   }
@@ -97,13 +97,13 @@ function gatherErrorDetail(failure: Element): string {
     // .replace(/</g, "&lt;")
     // .replace(/>/g, "&gt;")
   }
-  detail += "```"
+  detail += "\n```"
   return detail
 }
 
 function reportFailures(failuresAndErrors: Element[], name: string): void {
   fail(`${name} have failed, see below for more information.`)
-  let testResultsTable: string = `### ${name}:\n\n`
+  let testResultsTable: string = `\n\n### ${name}:\n\n`
   const keys: string[] = Array.from(failuresAndErrors[0].attributes).map((attr: Attribute) => attr.nodeName)
   const attributes: string[] = keys.map((key) => {
     return key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase()
