@@ -97,7 +97,7 @@ function gatherErrorDetail(failure: Element): string {
     // .replace(/</g, "&lt;")
     // .replace(/>/g, "&gt;")
   }
-  return detail
+  return detail.split("\\n").join("\n")
 }
 
 function reportFailures(failuresAndErrors: Element[], name: string): void {

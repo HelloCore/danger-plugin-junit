@@ -59,7 +59,7 @@ function gatherErrorDetail(failure) {
         // .replace(/</g, "&lt;")
         // .replace(/>/g, "&gt;")
     }
-    return detail;
+    return detail.split("\\n").join("\n");
 }
 function reportFailures(failuresAndErrors, name) {
     fail(`${name} have failed, see below for more information.`);
