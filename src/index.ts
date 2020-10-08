@@ -132,10 +132,14 @@ function reportFailures(failuresAndErrors: Element[], name: string): void {
     }
     // testResultsTable += `|${rowValues.join("|")}|\n`
     rowValues.map((value, index) => {
-      testResultsTable += `\n${attributes[index]}: ${value}`
+      if(attributes[index] == "Error"){
+        testResultsTable += `\n\n${attributes[index]}:\n\n${value}`
+      }else{
+        testResultsTable += `\n\n${attributes[index]}: ${value}`
+      }
     })
   })
-  testResultsTable += `\n`
+  testResultsTable += `\n\n`
 
   markdown(testResultsTable)
 }

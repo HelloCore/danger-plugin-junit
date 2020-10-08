@@ -4,14 +4,21 @@ exports[`junit() Checks test failures were failed 1`] = `
 "### Tests:
 
 
+
 Classname: android.Titanium.UI.Window
+
 Name: .safeAreaPadding with extendSafeArea true
+
 Time: 0.052
-Error: \`\`\`AssertionError: expected 0 to be above 0
+
+Error:
+
+\`\`\`AssertionError: expected 0 to be above 0
 at Assertion.prop.(anonymous function) (/should.js:1411:20)
 		at Window.<anonymous> (/ti.ui.window.test.js:675:35)
 		at Window.value (ti:/events.js:50:21)
 		at Window.value (ti:/events.js:102:19)\`\`\`
+
 "
 `;
 
@@ -19,18 +26,31 @@ exports[`junit() Combines multiple report files 1`] = `
 "### Tests:
 
 
+
 Classname: android.Titanium.UI.Window
+
 Name: .safeAreaPadding with extendSafeArea true
+
 Time: 0.052
-Error: \`\`\`AssertionError: expected 0 to be above 0
+
+Error:
+
+\`\`\`AssertionError: expected 0 to be above 0
 at Assertion.prop.(anonymous function) (/should.js:1411:20)
 		at Window.<anonymous> (/ti.ui.window.test.js:675:35)
 		at Window.value (ti:/events.js:50:21)
 		at Window.value (ti:/events.js:102:19)\`\`\`
+
 Classname: adb with an emulator running
+
 Name: #pull()
+
 Time: 0
-Error: \`\`\`ENOENT: no such file or directory, unlink '/Users/eharris/Documents/git/node-titanium-sdk/tests/build.prop'\`\`\`
+
+Error:
+
+\`\`\`ENOENT: no such file or directory, unlink '/Users/eharris/Documents/git/node-titanium-sdk/tests/build.prop'\`\`\`
+
 "
 `;
 
@@ -38,10 +58,17 @@ exports[`junit() Handles failures from mocha-jenkins-reporter 1`] = `
 "### Tests:
 
 
+
 Classname: adb with an emulator running
+
 Name: #pull()
+
 Time: 0
-Error: \`\`\`ENOENT: no such file or directory, unlink '/Users/eharris/Documents/git/node-titanium-sdk/tests/build.prop'\`\`\`
+
+Error:
+
+\`\`\`ENOENT: no such file or directory, unlink '/Users/eharris/Documents/git/node-titanium-sdk/tests/build.prop'\`\`\`
+
 "
 `;
 
@@ -49,14 +76,21 @@ exports[`junit() allows setting a custom header 1`] = `
 "### My awesome tests:
 
 
+
 Classname: android.Titanium.UI.Window
+
 Name: .safeAreaPadding with extendSafeArea true
+
 Time: 0.052
-Error: \`\`\`AssertionError: expected 0 to be above 0
+
+Error:
+
+\`\`\`AssertionError: expected 0 to be above 0
 at Assertion.prop.(anonymous function) (/should.js:1411:20)
 		at Window.<anonymous> (/ti.ui.window.test.js:675:35)
 		at Window.value (ti:/events.js:50:21)
 		at Window.value (ti:/events.js:102:19)\`\`\`
+
 "
 `;
 
@@ -64,10 +98,16 @@ exports[`junit() handles karma junit report 1`] = `
 "### Tests:
 
 
+
 Name: appcelerator.encrypteddatabase can be required
+
 Time: 0.014
+
 Classname: android.appcelerator.encrypteddatabase
-Error: \`\`\`
+
+Error:
+
+\`\`\`
 TypeError: Cannot set property 'invocationAPIs' of undefined
 error properties: Object({ toJSON: Function })
     at <Jasmine>
@@ -77,5 +117,6 @@ error properties: Object({ toJSON: Function })
     at Module.require (ti:/module.js:246:16)
     at require (ti:/module.js:570:15)
     at <Jasmine>\`\`\`
+
 "
 `;
