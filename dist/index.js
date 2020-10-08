@@ -43,7 +43,7 @@ function junit(options) {
 }
 exports.default = junit;
 function gatherErrorDetail(failure) {
-    let detail = "```";
+    let detail = "\n\n```";
     if (failure.hasAttribute("type") && failure.getAttribute("type") !== "") {
         detail += `${failure.getAttribute("type")}: `;
     }
@@ -59,12 +59,12 @@ function gatherErrorDetail(failure) {
         // .replace(/</g, "&lt;")
         // .replace(/>/g, "&gt;")
     }
-    detail += "```";
+    detail += "\n```";
     return detail;
 }
 function reportFailures(failuresAndErrors, name) {
     fail(`${name} have failed, see below for more information.`);
-    let testResultsTable = `### ${name}:\n\n`;
+    let testResultsTable = `\n\n### ${name}:\n\n`;
     const keys = Array.from(failuresAndErrors[0].attributes).map((attr) => attr.nodeName);
     const attributes = keys.map((key) => {
         return key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
@@ -93,10 +93,15 @@ function reportFailures(failuresAndErrors, name) {
         }
         // testResultsTable += `|${rowValues.join("|")}|\n`
         rowValues.map((value, index) => {
-            testResultsTable += `\n${attributes[index]}: ${value}`;
+            if (attributes[index] == "Error") {
+                testResultsTable += `\n\n${attributes[index]}:\n\n${value}`;
+            }
+            else {
+                testResultsTable += `\n\n${attributes[index]}: ${value}`;
+            }
         });
     });
-    testResultsTable += `\n`;
+    testResultsTable += `\n\n`;
     markdown(testResultsTable);
 }
 function reportSummary(suites) {
