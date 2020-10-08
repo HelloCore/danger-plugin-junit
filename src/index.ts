@@ -81,7 +81,7 @@ export default async function junit(options: JUnitReportOptions) {
 }
 
 function gatherErrorDetail(failure: Element): string {
-  let detail = "\n\n```"
+  let detail = ""
   if (failure.hasAttribute("type") && failure.getAttribute("type") !== "") {
     detail += `${failure.getAttribute("type")}: `
   }
@@ -97,13 +97,12 @@ function gatherErrorDetail(failure: Element): string {
     // .replace(/</g, "&lt;")
     // .replace(/>/g, "&gt;")
   }
-  detail += "\n```"
   return detail
 }
 
 function reportFailures(failuresAndErrors: Element[], name: string): void {
   fail(`${name} have failed, see below for more information.`)
-  let testResultsTable: string = `\n\n### ${name}:\n\n`
+  let testResultsTable: string = `\n\n#### ❗️\[danger-plugin-junit\] Error Messages ️❗️\n\n---\n\n`
   const keys: string[] = Array.from(failuresAndErrors[0].attributes).map((attr: Attribute) => attr.nodeName)
   const attributes: string[] = keys.map((key) => {
     return key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase()
@@ -133,13 +132,15 @@ function reportFailures(failuresAndErrors: Element[], name: string): void {
     // testResultsTable += `|${rowValues.join("|")}|\n`
     rowValues.map((value, index) => {
       if(attributes[index] == "Error"){
-        testResultsTable += `\n\n${attributes[index]}:\n\n${value}`
+        testResultsTable += `\n\n#### Message\n\n\`\`\`\n${value}\`\`\`\n\n`
+      }else if(attributes[index] == "Classname") {
+        testResultsTable += `\n\n> File: ${value.substr(19)}.dart`
       }else{
-        testResultsTable += `\n\n${attributes[index]}: ${value}`
+        testResultsTable += `\n\n> ${attributes[index]}: ${value}`
       }
     })
   })
-  testResultsTable += `\n\n`
+  testResultsTable += `\n\n---\n\n`
 
   markdown(testResultsTable)
 }
