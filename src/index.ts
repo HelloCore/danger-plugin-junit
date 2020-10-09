@@ -132,11 +132,11 @@ function reportFailures(failuresAndErrors: Element[], name: string): void {
     // testResultsTable += `|${rowValues.join("|")}|\n`
     rowValues.map((value, index) => {
       if(attributes[index] == "Error"){
-        testResultsTable += `\n\n#### Message\n\n\`\`\`\n${value}\`\`\`\n\n`
+        testResultsTable += `\n\n#### Message\n\n\`\`\`\n${value}\n\`\`\`\n\n`
       }else if(attributes[index] == "Classname") {
-        testResultsTable += `\n\n> File: ${value.substr(19)}.dart`
+        testResultsTable += `\n\n❌ Fail in \`${value.substr(19)}.dart\``
       }else{
-        testResultsTable += `\n\n> ${attributes[index]}: ${value}`
+        testResultsTable += `\n\n> ${attributes[index]}: *${value}*`
       }
     })
   })
