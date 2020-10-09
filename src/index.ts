@@ -142,8 +142,8 @@ function reportFailures(failuresAndErrors: Element[], name: string): void {
         testResultsTable += `\n\n> ${attributes[index]}: **${value}**`
       }
       
-      testResultsTable += `\n\n---\n\n`
     })
+    testResultsTable += `\n\n---\n\n`
   })
 
   markdown(testResultsTable)
