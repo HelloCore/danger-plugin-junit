@@ -134,13 +134,17 @@ function reportFailures(failuresAndErrors: Element[], name: string): void {
       if(attributes[index] == "Error"){
         testResultsTable += `\n\n#### Message\n\n\`\`\`\n${value}\n\`\`\`\n\n`
       }else if(attributes[index] == "Classname") {
-        testResultsTable += `\n\n❌ Fail in \`${value.substr(19)}.dart\``
-      }else{
-        testResultsTable += `\n\n> ${attributes[index]}: *${value}*`
+        testResultsTable += `\n\n❌ Fail in \`${value.substr(19).split('.').join('/')}.dart\``
+      }else if(attributes[index] == "Time") {
+        const time = Number.parseFloat(value);
+        testResultsTable += `\n\n> ${attributes[index]}: **${time * 1000} ms**`
+      } else{
+        testResultsTable += `\n\n> ${attributes[index]}: **${value}**`
       }
+      
+      testResultsTable += `\n\n---\n\n`
     })
   })
-  testResultsTable += `\n\n---\n\n`
 
   markdown(testResultsTable)
 }
