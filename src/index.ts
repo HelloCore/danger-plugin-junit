@@ -102,7 +102,7 @@ function gatherErrorDetail(failure: Element): string {
 
 function reportFailures(failuresAndErrors: Element[], name: string): void {
   fail(`${name} have failed, see below for more information.`)
-  let testResultsTable: string = `\n\n#### ❗️\[danger-plugin-junit\] Error Messages ️❗️\n\n---\n\n`
+  let testResultsTable: string = `\n→  \n\n   \n\n\n   \n\n\n#### ❗️\[danger-plugin-junit\] Error Messages ️❗️\n\n---\n\n`
   const keys: string[] = Array.from(failuresAndErrors[0].attributes).map((attr: Attribute) => attr.nodeName)
   const attributes: string[] = keys.map((key) => {
     return key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase()

@@ -63,7 +63,7 @@ function gatherErrorDetail(failure) {
 }
 function reportFailures(failuresAndErrors, name) {
     fail(`${name} have failed, see below for more information.`);
-    let testResultsTable = `\n\n#### ❗️\[danger-plugin-junit\] Error Messages ️❗️\n\n---\n\n`;
+    let testResultsTable = `\n→  \n\n   \n\n\n   \n\n\n#### ❗️\[danger-plugin-junit\] Error Messages ️❗️\n\n---\n\n`;
     const keys = Array.from(failuresAndErrors[0].attributes).map((attr) => attr.nodeName);
     const attributes = keys.map((key) => {
         return key.substr(0, 1).toUpperCase() + key.substr(1).toLowerCase();
