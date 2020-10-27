@@ -146,6 +146,9 @@ function gatherSuites(reportPath) {
         }
         const contents = yield fs.readFile(reportPath, "utf8");
         const doc = new xmldom_1.DOMParser().parseFromString(contents, "text/xml");
+        if (doc.documentElement == null) {
+            return [];
+        }
         const suiteRoot = doc.documentElement.firstChild.tagName === "testsuites" ? doc.documentElement.firstChild : doc.documentElement;
         return suiteRoot.tagName === "testsuite" ? [suiteRoot] : Array.from(suiteRoot.getElementsByTagName("testsuite"));
     });

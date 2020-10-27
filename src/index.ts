@@ -185,6 +185,9 @@ async function gatherSuites(reportPath: string): Promise<Element[]> {
   }
   const contents = await fs.readFile(reportPath, "utf8")
   const doc = new DOMParser().parseFromString(contents, "text/xml")
+  if(doc.documentElement == null) {
+    return []
+  }
   const suiteRoot =
     doc.documentElement.firstChild.tagName === "testsuites" ? doc.documentElement.firstChild : doc.documentElement
   return suiteRoot.tagName === "testsuite" ? [suiteRoot] : Array.from(suiteRoot.getElementsByTagName("testsuite"))
